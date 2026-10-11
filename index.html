@@ -1,10 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Oops! Surprise! 😂</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             text-align: center;
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
@@ -14,79 +21,120 @@
             color: #333;
             min-height: 100vh;
         }
+
         .container {
             background: white;
-            max-width: 500px;
+            width: 100%;
+            max-width: 650px;
             margin: 0 auto;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 35px 25px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             color: #ff4757;
-            font-size: 26px;
-            margin-bottom: 10px;
+            font-size: clamp(24px, 5vw, 38px);
+            margin-bottom: 20px;
         }
+
         p {
-            font-size: 15px;
+            font-size: 18px;
+            line-height: 1.7;
             color: #555;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .image-box img {
+
+        .image-box {
             width: 100%;
-            max-height: 300px;
+            margin: 20px auto;
+        }
+
+        .image-box img {
+            display: block;
+            width: 100%;
+            max-height: 350px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 15px;
             border: 3px solid #eee;
             background: #fff;
         }
+
         .footer-note {
             margin-top: 15px;
-            font-size: 13px;
-            color: #888;
         }
+
         .counter-box {
-            margin-top: 15px;
-            font-size: 14px;
+            margin-top: 20px;
+            font-size: 17px;
             color: #444;
             background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 12px 18px;
+            border-radius: 12px;
             display: inline-block;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 25px 15px;
+            }
+
+            .container {
+                padding: 25px 18px;
+                border-radius: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <h1>হা হা! ধরা খেয়ে গেছেন! 😂</h1>
-        <p>আপনি যাকে খুঁজছেন সে এই মুহূর্তে একটু ব্যস্ত আছে, তাই তার বদলে আপনাকে স্বাগতম!</p>
-        
-        <!-- গাধার আসল ছবি -->
+
+        <h1>হা হা! ধরা খেয়ে গেছেন! 😂</h1>
+
+        <p>
+            আপনি যাকে খুঁজছেন সে এই মুহূর্তে একটু ব্যস্ত আছে,
+            তাই তার বদলে আপনাকে স্বাগতম!
+        </p>
+
+        <!-- মজাদার বানরের ছবি -->
         <div class="image-box">
-            <img src="https://images.unsplash.com/photo-1557431175-36427d1a499e?w=800&auto=format&fit=crop&q=80" alt="Donkey Prank">
+            <img
+                src="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=800&auto=format&fit=crop&q=80"
+                alt="Funny Monkey Prank"
+                loading="eager"
+            >
         </div>
 
         <div class="footer-note">
-            <p>চমকে যাওয়ার জন্য ধন্যবাদ! 😉</p>
+            <p>চমকে যাওয়ার জন্য ধন্যবাদ! 😉</p>
         </div>
 
-        <!-- ভিউ কাউন্টার -->
+        <!-- ব্রাউজারভিত্তিক ভিউ কাউন্টার -->
         <div class="counter-box">
-            👀 মোট ভিজিট করেছে: <span id="view-count">3</span> বার
+            👀 মোট ভিজিট করেছে:
+            <span id="view-count">0</span> বার
         </div>
+
     </div>
 
     <script>
-        let views = localStorage.getItem('prank_views_count');
-        if (!views) {
-            views = 3;
-        } else {
-            views = parseInt(views) + 1;
-        }
-        localStorage.setItem('prank_views_count', views);
-        document.getElementById('view-count').innerText = views;
+        const counterKey = 'prank_views_count';
+
+        let views = Number(localStorage.getItem(counterKey)) || 0;
+
+        views++;
+
+        localStorage.setItem(counterKey, views);
+
+        document.getElementById('view-count').textContent = views;
     </script>
 
 </body>
 </html>
+```
